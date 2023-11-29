@@ -1,28 +1,53 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Prototype.Topdown{
 	public class GameStateManager : MonoBehaviour{
-		public static GameStateManager StateManager;
-		public PlayerData PlayerData;
 		[SerializeField] private GameStateData gameData;
+		public static GameStateManager StateManager;
+
+		public PlayerData PlayerData;
+		public BattleSetting CurrentSetting{ get; private set; }
 
 
 		private void Awake(){
-			DontDestroyOnLoad(this);
 			if(StateManager == null){
 				StateManager = this;
 			}
+
+			DontDestroyOnLoad(this);
+			PlayerData = new PlayerData();
 		}
 
 		public void ModifyState(GameState state, int id = 0){
-			if(state == GameState.GamePlay){
-				ChangeToGamePlayScene(id);
+			switch(state){
+				case GameState.CutScene:
+					ChangeToCutScene(id);
+					break;
+				case GameState.Tutorial:
+					break;
+				case GameState.GamePlay:
+					ChangeToGamePlayScene(id);
+					break;
+				case GameState.Shop:
+					SceneManager.LoadScene(gameData.shopScene.ToString());
+					break;
+				case GameState.BossFight:
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(state), state, null);
 			}
 		}
 
 		private void ChangeToGamePlayScene(int level){
+			var sceneName = gameData.battleScene.ToString();
+			SceneManager.LoadScene(sceneName);
+			var battleSetting = gameData.battleSettings[level];
+			CurrentSetting = battleSetting;
 		}
+
+		private void ChangeToCutScene(int stage){ }
 	}
 
 	public enum GameState{

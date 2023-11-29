@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,6 @@ namespace Prototype.Topdown{
 	public class TopdownEnemyRoot : MonoBehaviour{
 		[SerializeField] private GameObject enemyPrefab;
 		[SerializeField] private Transform player;
-		[SerializeField] private float spawnDuration = 1f;
 		[SerializeField] private float spawnRadius = 5f;
 		[SerializeField] private float randomTargetRadius = 0.5f;
 
@@ -15,8 +15,13 @@ namespace Prototype.Topdown{
 		private readonly List<Vector2> _targetPositionList = new();
 		private ColdDownTimer _timer;
 
+		[SerializeField] [ReadOnly] private int killGoal;
+		[SerializeField] [ReadOnly] private int killCount;
+
 		private void Start(){
-			_timer = new ColdDownTimer(spawnDuration);
+			var battleSetting = GameStateManager.StateManager.CurrentSetting;
+			killGoal = battleSetting.enemyCount;
+			_timer = new ColdDownTimer(battleSetting.spawnDurationRandomMax);
 		}
 
 		private void FixedUpdate(){
@@ -59,6 +64,10 @@ namespace Prototype.Topdown{
 		private void OnEnemyGetKill(TopdownEnemy enemy){
 			enemies.Remove(enemy);
 			Destroy(enemy.gameObject);
+			killCount++;
+			if(killCount >= killGoal){
+				GameStateManager.StateManager.ModifyState(GameState.Shop);
+			}
 		}
 
 

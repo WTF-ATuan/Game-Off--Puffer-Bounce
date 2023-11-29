@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Prototype.Topdown{
 	[CreateAssetMenu(menuName = "GameState/GameData", fileName = "StateData")]
