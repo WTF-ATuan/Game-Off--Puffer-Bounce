@@ -12,3 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: GameStateSetting
   m_EditorClassIdentifier: Assembly-CSharp:Prototype.Topdown:GameStateData
+  battleScene:
+    m_SceneName: Battle Scene
+  battleSettings:
+  - enemyCount: 20
+    spawnDurationRandomMax: 7
+    spawnDurationRandomMin: 5
+  - enemyCount: 30
+    spawnDurationRandomMax: 6
+    spawnDurationRandomMin: 4
+  - enemyCount: 50
+    spawnDurationRandomMax: 5
+    spawnDurationRandomMin: 3
+  shopScene:
+    m_SceneName: Shop
+  bossScene:
+    m_SceneName: 
+  cutscenes: []

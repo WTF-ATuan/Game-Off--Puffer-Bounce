@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace Prototype.Topdown{
 	public class GameStateManager : MonoBehaviour{
 		public static GameStateManager StateManager;
+		public PlayerData PlayerData;
+		[SerializeField] private GameStateData gameData;
+
 
 		private void Awake(){
 			DontDestroyOnLoad(this);
@@ -12,7 +15,14 @@ namespace Prototype.Topdown{
 			}
 		}
 
-		public void ModifyState(GameState state, int id = 0){ }
+		public void ModifyState(GameState state, int id = 0){
+			if(state == GameState.GamePlay){
+				ChangeToGamePlayScene(id);
+			}
+		}
+
+		private void ChangeToGamePlayScene(int level){
+		}
 	}
 
 	public enum GameState{
@@ -25,10 +35,6 @@ namespace Prototype.Topdown{
 
 	public class PlayerData{
 		public int Coins;
-	}
-
-	[CreateAssetMenu(menuName = "GameState/GameData", fileName = "StateData")]
-	public class GameStateData : ScriptableObject{
-		[SerializeField] private SceneReference battleScene;
+		public int BattleLevel;
 	}
 }
