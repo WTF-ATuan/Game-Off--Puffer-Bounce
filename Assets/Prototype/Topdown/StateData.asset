@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb08a20438d64766bd61c31cf6d21fd3, type: 3}
+  m_Name: StateData
+  m_EditorClassIdentifier: 
+  battleScene:
+    m_SceneName: Battle Scene
+  battleSettings:
+  - enemyCount: 20
+    spawnDurationRandomMax: 7
+    spawnDurationRandomMin: 3
+  - enemyCount: 40
+    spawnDurationRandomMax: 5
+    spawnDurationRandomMin: 3
+  - enemyCount: 100
+    spawnDurationRandomMax: 3
+    spawnDurationRandomMin: 3
+  shopScene:
+    m_SceneName: Shop
+  bossScene:
+    m_SceneName: 
+  cutscenes: []
