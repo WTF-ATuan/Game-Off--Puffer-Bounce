@@ -14,7 +14,6 @@ namespace Prototype.Topdown{
 	[System.Serializable]
 	public class BattleSetting{
 		public int enemyCount;
-		public float spawnDurationRandomMax = 5;
-		public float spawnDurationRandomMin = 0.5f;
+		public float spawnDuration;
 	}
 }

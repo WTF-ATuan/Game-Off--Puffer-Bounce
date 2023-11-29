@@ -21,7 +21,7 @@ namespace Prototype.Topdown{
 		private void Start(){
 			var battleSetting = GameStateManager.StateManager.CurrentSetting;
 			killGoal = battleSetting.enemyCount;
-			_timer = new ColdDownTimer(battleSetting.spawnDurationRandomMax);
+			_timer = new ColdDownTimer(battleSetting.spawnDuration);
 		}
 
 		private void FixedUpdate(){

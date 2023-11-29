@@ -18,6 +18,11 @@ namespace Prototype.Topdown{
 
 			DontDestroyOnLoad(this);
 			PlayerData = new PlayerData();
+			TestGamePlay();
+		}
+
+		private void TestGamePlay(){
+			CurrentSetting = gameData.battleSettings[0];
 		}
 
 		public void ModifyState(GameState state, int id = 0){
