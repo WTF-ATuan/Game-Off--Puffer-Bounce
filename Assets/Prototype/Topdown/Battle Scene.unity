@@ -9232,6 +9232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 456876648384677988, guid: ac8681aa7439bce4b8ac7a0f7c1afe20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 910840422391348356, guid: ac8681aa7439bce4b8ac7a0f7c1afe20, type: 3}
       propertyPath: m_Name
       value: Game State Manager

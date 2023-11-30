@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Prototype.Topdown{
 	public class TopdownEnemy : MonoBehaviour{
@@ -19,7 +20,17 @@ namespace Prototype.Topdown{
 			hp -= 1;
 			_movementPercent *= 0.75f;
 			if(hp > 0) return;
-			Instantiate(drops, transform.position, Quaternion.identity).name = drops.name;
+			if(drops.name == "Energy scale"){
+				var dropAmount = Random.Range(2, 4);
+				for(var i = 0; i < dropAmount; i++){
+					Vector3 randomSpawnPoint = Random.insideUnitCircle.normalized * (i * 0.8f);
+					Instantiate(drops, transform.position + randomSpawnPoint, Quaternion.identity).name = drops.name;
+				}
+			}
+			else{
+				Instantiate(drops, transform.position, Quaternion.identity).name = drops.name;
+			}
+
 			OnEnemyGetKill?.Invoke(this);
 		}
 

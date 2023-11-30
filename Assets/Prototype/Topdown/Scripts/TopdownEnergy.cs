@@ -51,7 +51,7 @@ namespace Prototype.Topdown{
 
 			var objName = col.name;
 			switch(objName){
-				case "Coins":
+				case "Coin":
 					GameStateManager.StateManager.PlayerData.Coins++;
 					break;
 				case "Energy scale":

@@ -66,9 +66,9 @@ namespace Prototype.Topdown{
 		private GameObject RandomChooseEnemy(){
 			var range = Random.Range(0, 100);
 			return range switch{
-				< 50 => enemyPrefab,
-				> 50 and < 80 => coinEnemyPrefab,
-				_ => healEnemyPrefab
+				< 70 => enemyPrefab,
+				> 70 and < 90 => healEnemyPrefab,
+				_ => coinEnemyPrefab
 			};
 		}
 
