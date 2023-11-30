@@ -7,11 +7,13 @@ namespace Prototype.Topdown{
 
 
 		private Rigidbody2D _rigidbody;
+		private TopdownEnergy _energy;
 		private Vector2 _moveValue;
 		private bool _jump;
 
 		private void Start(){
 			_rigidbody = GetComponent<Rigidbody2D>();
+			_energy = GetComponent<TopdownEnergy>();
 		}
 
 		private void Update(){
@@ -26,8 +28,9 @@ namespace Prototype.Topdown{
 		}
 
 		private void HandleDash(){
-			if(!_jump) return;
-			_rigidbody.AddForce(_moveValue * 5 , ForceMode2D.Impulse);
+			if(!_jump || !_energy.CheckEnergyCost(1)) return;
+			_rigidbody.AddForce(_moveValue * 10, ForceMode2D.Impulse);
+			_energy.UseEnergy(1);
 		}
 
 		private void HandleFaceDirection(){

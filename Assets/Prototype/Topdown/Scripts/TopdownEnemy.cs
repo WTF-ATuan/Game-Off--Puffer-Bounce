@@ -19,7 +19,7 @@ namespace Prototype.Topdown{
 			hp -= 1;
 			_movementPercent *= 0.75f;
 			if(hp > 0) return;
-			Instantiate(drops, transform.position, Quaternion.identity);
+			Instantiate(drops, transform.position, Quaternion.identity).name = drops.name;
 			OnEnemyGetKill?.Invoke(this);
 		}
 

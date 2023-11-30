@@ -10,9 +10,11 @@ namespace Prototype.Topdown{
 		[SerializeField] private int fireRange = 3;
 
 		private Camera _mainCamera;
+		private TopdownEnergy _energy;
 
 		private void Start(){
 			_mainCamera = Camera.main;
+			_energy = GetComponent<TopdownEnergy>();
 			var playerData = GameStateManager.StateManager.PlayerData;
 			ultScaleCount += playerData.AdditionUltCount;
 			shootScaleCount += playerData.AdditionShootCount;
@@ -23,8 +25,9 @@ namespace Prototype.Topdown{
 				Shoot(GetMouseDirection());
 			}
 
-			if(Input.GetMouseButtonDown(1)){
+			if(Input.GetMouseButtonDown(1) && _energy.CheckEnergyCost(3)){
 				Spray();
+				_energy.UseEnergy(3);
 			}
 		}
 
