@@ -139,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 1845907237389894271}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1929968414163926307
 CircleCollider2D:
@@ -188,8 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce2a98e1594f6bbd93af99f8d83988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 3
   moveSpeed: 3
+  drops: {fileID: 4711296266294362968, guid: fdc550e30901e524cab39d87b756adb9, type: 3}
 --- !u!50 &5634693940329876057
 Rigidbody2D:
   serializedVersion: 4

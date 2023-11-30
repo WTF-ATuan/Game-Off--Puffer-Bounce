@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 namespace Prototype.Topdown{
 	public class TopdownEnemyRoot : MonoBehaviour{
 		[SerializeField] private GameObject enemyPrefab;
+		[SerializeField] private GameObject healEnemyPrefab;
+		[SerializeField] private GameObject coinEnemyPrefab;
 		[SerializeField] private Transform player;
 		[SerializeField] private float spawnRadius = 5f;
 		[SerializeField] private float randomTargetRadius = 0.5f;
@@ -55,10 +57,19 @@ namespace Prototype.Topdown{
 		}
 
 		private void SpawnEnemy(){
-			var enemyClone = Instantiate(enemyPrefab, GetSpawnPosition(), Quaternion.identity);
+			var enemyClone = Instantiate(RandomChooseEnemy(), GetSpawnPosition(), Quaternion.identity);
 			var topdownEnemy = enemyClone.GetComponent<TopdownEnemy>();
 			topdownEnemy.OnEnemyGetKill += OnEnemyGetKill;
 			enemies.Add(topdownEnemy);
+		}
+
+		private GameObject RandomChooseEnemy(){
+			var range = Random.Range(0, 100);
+			return range switch{
+				< 50 => enemyPrefab,
+				> 50 and < 80 => coinEnemyPrefab,
+				_ => healEnemyPrefab
+			};
 		}
 
 		private void OnEnemyGetKill(TopdownEnemy enemy){

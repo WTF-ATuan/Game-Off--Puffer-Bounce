@@ -69,6 +69,7 @@ namespace Prototype.Topdown{
 		public int BattleLevel;
 
 		public int AdditionHealth = 0;
-		public int AdditionShoot = 0;
+		public int AdditionShootCount = 0;
+		public int AdditionUltCount = 0;
 	}
 }

@@ -5,6 +5,7 @@ namespace Prototype.Topdown{
 	public class TopdownEnemy : MonoBehaviour{
 		[SerializeField] private int hp = 2;
 		[SerializeField] private int moveSpeed = 3;
+		[SerializeField] private GameObject drops;
 		private Rigidbody2D _rigidbody;
 		public Action<TopdownEnemy> OnEnemyGetKill;
 		private float _movementPercent = 1;
@@ -18,6 +19,7 @@ namespace Prototype.Topdown{
 			hp -= 1;
 			_movementPercent *= 0.75f;
 			if(hp > 0) return;
+			Instantiate(drops, transform.position, Quaternion.identity);
 			OnEnemyGetKill?.Invoke(this);
 		}
 

@@ -1,16 +1,21 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Prototype.Topdown{
 	public class TopdownShoot : MonoBehaviour{
 		[SerializeField] private GameObject scaleBullet;
-		[SerializeField] private int scaleCount = 6;
+		[SerializeField] private int ultScaleCount = 5;
+		[SerializeField] private int shootScaleCount = 1;
 		[SerializeField] private int fireRange = 3;
 
 		private Camera _mainCamera;
 
 		private void Start(){
 			_mainCamera = Camera.main;
+			var playerData = GameStateManager.StateManager.PlayerData;
+			ultScaleCount += playerData.AdditionUltCount;
+			shootScaleCount += playerData.AdditionShootCount;
 		}
 
 		private void Update(){
@@ -24,8 +29,8 @@ namespace Prototype.Topdown{
 		}
 
 		private void Spray(){
-			var additionAngle = 360 / scaleCount;
-			for(var i = 0; i < scaleCount; i++){
+			var additionAngle = 360 / ultScaleCount;
+			for(var i = 0; i < ultScaleCount; i++){
 				var angle = additionAngle * i;
 				var position = transform.position;
 				var x = position.x + Mathf.Cos(angle * Mathf.Deg2Rad);
@@ -41,9 +46,19 @@ namespace Prototype.Topdown{
 		}
 
 		private void Shoot(Vector3 direction){
-			var bulletClone = Instantiate(scaleBullet, transform.position + direction * fireRange, Quaternion.identity);
-			bulletClone.transform.up = direction;
-			bulletClone.GetComponent<Rigidbody2D>().AddForce(direction * 10, ForceMode2D.Impulse);
+			const float angleIncrement = 10f;
+			var startingAngle = -(shootScaleCount - 1) * angleIncrement / 2f;
+
+			for(var i = 0; i < shootScaleCount; i++){
+				var bulletClone = Instantiate(scaleBullet, transform.position + direction * fireRange,
+					Quaternion.identity);
+
+				var currentAngle = startingAngle + i * angleIncrement;
+				var rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
+
+				bulletClone.transform.up = rotation * direction;
+				bulletClone.GetComponent<Rigidbody2D>().AddForce(bulletClone.transform.up * 10, ForceMode2D.Impulse);
+			}
 		}
 
 		private Vector3 GetMouseDirection(){

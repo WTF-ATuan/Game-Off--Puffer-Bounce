@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   moveSpeed: 3
+  drops: {fileID: 8821808000921221130, guid: 509a84b24e4a52d4ba71edb01fdb2322, type: 3}
 --- !u!50 &5634693940329876057
 Rigidbody2D:
   serializedVersion: 4

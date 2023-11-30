@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 609073406466857374}
   - component: {fileID: 5634693940329876057}
   m_Layer: 8
-  m_Name: Coin Zombie Fish 1
+  m_Name: Coin Zombie Fish
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 2
   moveSpeed: 5
+  drops: {fileID: 4571201641125978458, guid: 7799b352f90b7b84a9637a9ffdd60b86, type: 3}
 --- !u!50 &5634693940329876057
 Rigidbody2D:
   serializedVersion: 4
