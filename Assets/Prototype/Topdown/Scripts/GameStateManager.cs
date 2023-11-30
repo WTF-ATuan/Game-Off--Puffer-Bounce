@@ -65,6 +65,10 @@ namespace Prototype.Topdown{
 
 	public class PlayerData{
 		public int Coins;
+		public int HealthCoins;
 		public int BattleLevel;
+
+		public int AdditionHealth = 0;
+		public int AdditionShoot = 0;
 	}
 }
