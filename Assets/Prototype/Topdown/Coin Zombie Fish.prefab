@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -801539834, guid: 6ffe99cfa4dec9d439134dd0a2f447b5, type: 3}
+  m_Sprite: {fileID: -1081669151, guid: 909cf64eae5a1b94e9f1aff3342269d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 567588087678797839}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16fe2638397b2904695e432355b55027, type: 2}
+  m_Controller: {fileID: 9100000, guid: 86480bc05805b314a86a2f0ab33f5993, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 609073406466857374}
   - component: {fileID: 5634693940329876057}
   m_Layer: 8
-  m_Name: Zombie Fish
+  m_Name: Coin Zombie Fish
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,9 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce2a98e1594f6bbd93af99f8d83988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
-  moveSpeed: 3
-  drops: {fileID: 4711296266294362968, guid: fdc550e30901e524cab39d87b756adb9, type: 3}
+  hp: 2
+  moveSpeed: 5
+  drops: {fileID: 4571201641125978458, guid: 7799b352f90b7b84a9637a9ffdd60b86, type: 3}
 --- !u!50 &5634693940329876057
 Rigidbody2D:
   serializedVersion: 4
