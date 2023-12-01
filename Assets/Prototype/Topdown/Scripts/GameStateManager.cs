@@ -32,14 +32,17 @@ namespace Prototype.Topdown{
 		public void ModifyState(GameState state, int id = 0){
 			switch(state){
 				case GameState.CutScene:
+					Time.timeScale = 1;
 					ChangeToCutScene(id);
 					break;
 				case GameState.Tutorial:
 					break;
 				case GameState.GamePlay:
+					Time.timeScale = 1;
 					ChangeToGamePlayScene(id);
 					break;
 				case GameState.Shop:
+					Time.timeScale = 1;
 					SceneManager.LoadScene(gameData.shopScene.ToString());
 					break;
 				case GameState.BossFight:
@@ -47,11 +50,13 @@ namespace Prototype.Topdown{
 				case GameState.Defeated:
 					onDefeated?.Invoke();
 					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
+					Time.timeScale = 0;
 					break;
 
 				case GameState.Victory:
 					onVictory?.Invoke();
 					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
+					Time.timeScale = 0;
 					break;
 
 				default:

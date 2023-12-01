@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,21 +17,42 @@ namespace Prototype.Topdown{
 		[HideInInspector] public List<TopdownEnemy> enemies = new();
 		private readonly List<Vector2> _targetPositionList = new();
 		private ColdDownTimer _timer;
+		private const float StartSpawnTime = 2;
+		private const float RoundTime = 90;
+		private float _roundTimer;
 
-		[SerializeField] [ReadOnly] private int killGoal;
-		[SerializeField] [ReadOnly] private int killCount;
+		[SerializeField] private TMP_Text timeText;
 
 		private void Start(){
-			var battleSetting = GameStateManager.StateManager.CurrentSetting;
-			killGoal = battleSetting.enemyCount;
-			_timer = new ColdDownTimer(battleSetting.spawnDuration);
+			var battleLevel = GameStateManager.StateManager.PlayerData.BattleLevel;
+			Debug.Log($"battleLevel = {battleLevel}");
+			var spawnTime = StartSpawnTime;
+			for(var i = 0; i < battleLevel; i++){
+				spawnTime *= 0.75f;
+			}
+
+			_timer = new ColdDownTimer(spawnTime);
+			_roundTimer = RoundTime;
+			GameStateManager.StateManager.PlayerData.BattleLevel += 1;
 		}
 
 		private void FixedUpdate(){
 			SetEnemyFollowingTarget();
+			UpdateGameTime();
 			if(!_timer.CanInvoke()) return;
 			SpawnEnemy();
 			_timer.Reset();
+		}
+
+		private void UpdateGameTime(){
+			_roundTimer -= Time.fixedDeltaTime;
+			var minutes = Mathf.FloorToInt(_roundTimer / 60f);
+			var seconds = Mathf.FloorToInt(_roundTimer % 60f);
+
+			timeText.text = $"{minutes:00}:{seconds:00}";
+			if(_roundTimer < 0){
+				GameStateManager.StateManager.ModifyState(GameState.Victory);
+			}
 		}
 
 		private void SetEnemyFollowingTarget(){
@@ -75,10 +97,6 @@ namespace Prototype.Topdown{
 		private void OnEnemyGetKill(TopdownEnemy enemy){
 			enemies.Remove(enemy);
 			Destroy(enemy.gameObject);
-			killCount++;
-			if(killCount >= killGoal){
-				GameStateManager.StateManager.ModifyState(GameState.Victory);
-			}
 		}
 
 
