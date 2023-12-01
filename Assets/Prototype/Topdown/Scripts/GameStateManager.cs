@@ -15,6 +15,16 @@ namespace Prototype.Topdown{
 		public UnityEvent onDefeated;
 		public OnClickEvent onNextEvent;
 
+		public bool cheatMode;
+
+		private void Update(){
+			if(!cheatMode) return;
+			if(Input.GetKeyDown(KeyCode.Space)){
+				PlayerData.Coins += 100;
+				PlayerData.HealthCoins += 100;
+			}
+		}
+
 		private void Awake(){
 			if(StateManager == null){
 				StateManager = this;
