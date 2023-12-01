@@ -39,7 +39,7 @@ namespace Prototype.Topdown{
 			if(!col.gameObject.CompareTag("Enemy")) return;
 			if(!_protectionTimer.CanInvoke()) return;
 			_protectionTimer.Reset();
-			col.gameObject.GetComponent<TopdownEnemy>().Hit();
+			col.gameObject.GetComponent<TopdownEnemy>()?.Hit();
 			_currentHealth -= 1;
 			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.PlayerHurt);
 			if(_currentHealth < 1){

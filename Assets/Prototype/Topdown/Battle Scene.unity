@@ -765,8 +765,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 4162618811052419177, guid: f764de3f04476c142848b26b434785d7, type: 3}
   healEnemyPrefab: {fileID: 4162618811052419177, guid: 13b16387a7092034ba40b1e8f23e9bb1, type: 3}
   coinEnemyPrefab: {fileID: 4162618811052419177, guid: 3e0c26e84658053498c49d53074e136f, type: 3}
+  bossPrefab: {fileID: 4222009732813032576, guid: fdec03792e30ff84d8f8c490d09d51d5, type: 3}
   player: {fileID: 2029029280}
-  spawnRadius: 8
+  spawnRadius: 10
   randomTargetRadius: 1.5
   enemies: []
   timeText: {fileID: 135978846}
@@ -1048,12 +1049,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -999
-  m_Sprite: {fileID: 21300000, guid: d2c02aa268b291c46b9083990199c1aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b5ecfbc1f3c44349a2ddfe4055b8c80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.74, y: 5.07}
+  m_Size: {x: 120.00001, y: 85.01954}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2608,7 +2609,7 @@ GameObject:
   - component: {fileID: 2029029287}
   m_Layer: 7
   m_Name: Puffer Fish
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

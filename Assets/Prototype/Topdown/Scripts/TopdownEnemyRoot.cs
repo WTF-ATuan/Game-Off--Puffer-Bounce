@@ -10,6 +10,7 @@ namespace Prototype.Topdown{
 		[SerializeField] private GameObject enemyPrefab;
 		[SerializeField] private GameObject healEnemyPrefab;
 		[SerializeField] private GameObject coinEnemyPrefab;
+		[SerializeField] private GameObject bossPrefab;
 		[SerializeField] private Transform player;
 		[SerializeField] private float spawnRadius = 5f;
 		[SerializeField] private float randomTargetRadius = 0.5f;
@@ -25,7 +26,14 @@ namespace Prototype.Topdown{
 
 		private void Start(){
 			var battleLevel = GameStateManager.StateManager.PlayerData.BattleLevel;
-			Debug.Log($"battleLevel = {battleLevel}");
+			
+			if(battleLevel > 10){
+				var enemyClone = Instantiate(bossPrefab, GetSpawnPosition(), Quaternion.identity);
+				var topdownEnemy = enemyClone.GetComponent<TopdownEnemy>();
+				topdownEnemy.OnEnemyGetKill += OnEnemyGetKill;
+				enemies.Add(topdownEnemy);
+			}
+
 			var spawnTime = StartSpawnTime;
 			for(var i = 0; i < battleLevel; i++){
 				spawnTime *= 0.75f;

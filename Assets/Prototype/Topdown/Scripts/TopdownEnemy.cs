@@ -7,6 +7,7 @@ namespace Prototype.Topdown{
 		[SerializeField] private int hp = 2;
 		[SerializeField] private int moveSpeed = 3;
 		[SerializeField] private GameObject drops;
+		[SerializeField] private bool boss = false;
 		private Rigidbody2D _rigidbody;
 		public Action<TopdownEnemy> OnEnemyGetKill;
 		private float _movementPercent = 1;
@@ -20,6 +21,14 @@ namespace Prototype.Topdown{
 			hp -= 1;
 			_movementPercent *= 0.75f;
 			if(hp > 0) return;
+			if(boss){
+				var dropAmount = Random.Range(15, 30);
+				for(var i = 0; i < dropAmount; i++){
+					Vector3 randomSpawnPoint = Random.insideUnitCircle.normalized * (i * 0.2f);
+					Instantiate(drops, transform.position + randomSpawnPoint, Quaternion.identity).name = drops.name;
+				}
+			}
+
 			if(drops.name == "Energy scale"){
 				var dropAmount = Random.Range(2, 4);
 				for(var i = 0; i < dropAmount; i++){
@@ -30,6 +39,7 @@ namespace Prototype.Topdown{
 			else{
 				Instantiate(drops, transform.position, Quaternion.identity).name = drops.name;
 			}
+
 			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.EnemyDie);
 			OnEnemyGetKill?.Invoke(this);
 		}
