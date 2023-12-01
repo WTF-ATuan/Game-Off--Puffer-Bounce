@@ -10,7 +10,6 @@ namespace Prototype.Topdown{
 		public static GameStateManager StateManager;
 
 		public PlayerData PlayerData;
-		public BattleSetting CurrentSetting{ get; private set; }
 
 		public UnityEvent onVictory;
 		public UnityEvent onDefeated;
@@ -33,12 +32,8 @@ namespace Prototype.Topdown{
 
 			DontDestroyOnLoad(this);
 			PlayerData = new PlayerData();
-			TestGamePlay();
 		}
 
-		private void TestGamePlay(){
-			CurrentSetting = gameData.battleSettings[0];
-		}
 
 		public void ModifyState(GameState state, int id = 0){
 			switch(state){
@@ -76,11 +71,12 @@ namespace Prototype.Topdown{
 		private void ChangeToGamePlayScene(int level){
 			var sceneName = gameData.battleScene.ToString();
 			SceneManager.LoadScene(sceneName);
-			var battleSetting = gameData.battleSettings[level];
-			CurrentSetting = battleSetting;
 		}
 
-		private void ChangeToCutScene(int stage){ }
+		private void ChangeToCutScene(int stage){
+			var sceneName = gameData.cutscenes[stage].ToString();
+			SceneManager.LoadScene(sceneName);
+		}
 	}
 
 	public enum GameState{
