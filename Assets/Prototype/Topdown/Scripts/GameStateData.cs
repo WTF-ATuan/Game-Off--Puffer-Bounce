@@ -5,7 +5,6 @@ namespace Prototype.Topdown{
 	[CreateAssetMenu(menuName = "GameState/GameData", fileName = "StateData")]
 	public class GameStateData : ScriptableObject{
 		public SceneObject battleScene;
-		public List<BattleSetting> battleSettings = new();
 		public SceneObject shopScene;
 		public SceneObject bossScene;
 		public List<SceneObject> cutscenes;
