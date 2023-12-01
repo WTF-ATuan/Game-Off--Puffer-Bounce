@@ -56,8 +56,6 @@ namespace Prototype.Topdown{
 					Time.timeScale = 1;
 					SceneManager.LoadScene(gameData.shopScene.ToString());
 					break;
-				case GameState.BossFight:
-					break;
 				case GameState.Defeated:
 					onDefeated?.Invoke();
 					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
@@ -92,7 +90,6 @@ namespace Prototype.Topdown{
 		Defeated,
 		Victory,
 		Shop,
-		BossFight
 	}
 
 	public class PlayerData{
