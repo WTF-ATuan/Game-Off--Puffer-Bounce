@@ -26,13 +26,6 @@ namespace Prototype.Topdown{
 
 		private void Start(){
 			var battleLevel = GameStateManager.StateManager.PlayerData.BattleLevel;
-			
-			if(battleLevel > 10){
-				var enemyClone = Instantiate(bossPrefab, GetSpawnPosition(), Quaternion.identity);
-				var topdownEnemy = enemyClone.GetComponent<TopdownEnemy>();
-				topdownEnemy.OnEnemyGetKill += OnEnemyGetKill;
-				enemies.Add(topdownEnemy);
-			}
 
 			var spawnTime = StartSpawnTime;
 			for(var i = 0; i < battleLevel; i++){
@@ -96,8 +89,9 @@ namespace Prototype.Topdown{
 		private GameObject RandomChooseEnemy(){
 			var range = Random.Range(0, 100);
 			return range switch{
-				< 70 => enemyPrefab,
-				> 70 and < 90 => healEnemyPrefab,
+				<= 1 => bossPrefab,
+				> 1 and < 60 => enemyPrefab,
+				> 60 and < 85 => healEnemyPrefab,
 				_ => coinEnemyPrefab
 			};
 		}
