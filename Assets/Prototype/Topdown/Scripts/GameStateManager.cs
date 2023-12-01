@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 namespace Prototype.Topdown{
 	public class GameStateManager : MonoBehaviour{
 		[SerializeField] private GameStateData gameData;
+		public AudioManager audioManger;
 		public static GameStateManager StateManager;
 
 		public PlayerData PlayerData;

@@ -25,4 +25,5 @@ MonoBehaviour:
     m_SceneName: Shop
   bossScene:
     m_SceneName: 
-  cutscenes: []
+  cutscenes:
+  - m_SceneName: CutScene Start

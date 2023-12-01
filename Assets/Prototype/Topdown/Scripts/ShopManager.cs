@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +21,20 @@ namespace Prototype.Topdown{
 			energyUpgrade.onClick.AddListener(UpgradeEnergy);
 			ultUpgrade.onClick.AddListener(UpgradeUlt);
 			healthUpgrade.onClick.AddListener(UpdateHealth);
+			shootingUpgrade.onClick.AddListener(UpgradeShooting);
+		}
+
+		private void UpgradeShooting(){
+			if(!CheckPlayerCoin(int.Parse(shootingCost.text))){
+				Message("You don,t have enough coins");
+				return;
+			}
+
+			GameStateManager.StateManager.PlayerData.Coins -= int.Parse(shootingCost.text);
+			GameStateManager.StateManager.PlayerData.AdditionShootCount += 1;
+			var nextPrice = 5 * (int)Mathf.Pow(1.25f, GameStateManager.StateManager.PlayerData.AdditionShootCount - 1);
+			shootingCost.text = nextPrice.ToString();
+			Message("Success! Oh yeah");
 		}
 
 		private void UpdateHealth(){
@@ -45,7 +58,7 @@ namespace Prototype.Topdown{
 
 			GameStateManager.StateManager.PlayerData.Coins -= int.Parse(ultCost.text);
 			GameStateManager.StateManager.PlayerData.AdditionUltCount += 1;
-			var nextPrice = 7 * (int)Mathf.Pow(2, GameStateManager.StateManager.PlayerData.AdditionUltCount - 1);
+			var nextPrice = 7 * (int)Mathf.Pow(1.5f, GameStateManager.StateManager.PlayerData.AdditionUltCount - 1);
 			ultCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
 		}
@@ -58,7 +71,7 @@ namespace Prototype.Topdown{
 
 			GameStateManager.StateManager.PlayerData.Coins -= int.Parse(energyCost.text);
 			GameStateManager.StateManager.PlayerData.AdditionEnergyMax += 1;
-			var nextPrice = 5 * (int)Mathf.Pow(2, GameStateManager.StateManager.PlayerData.AdditionEnergyMax - 1);
+			var nextPrice = 5 * (int)Mathf.Pow(1.25f, GameStateManager.StateManager.PlayerData.AdditionEnergyMax - 1);
 			energyCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
 		}

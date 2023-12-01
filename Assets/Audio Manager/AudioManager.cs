@@ -1,38 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
-    [Header("..........................Audio Source")]
-    [SerializeField] AudioSource Music;
-    [SerializeField] AudioSource Sound;
+public class AudioManager : MonoBehaviour{
+	[Header("Audio Source")] [SerializeField]
+	private AudioSource music;
 
-    [Header(".....................Audio Clip")]
-    public AudioClip background;
+	[SerializeField] private AudioSource sound;
 
-    public AudioClip PlayerShooting;
-    public AudioClip EnemyDie;
+	[Header("Audio Clip")]
+	public AudioClip background;
 
-    public AudioClip bossDie;
+	public AudioClip playerShooting;
+	public AudioClip playerHurt;
+	public AudioClip playerDash;
+	public AudioClip enemyDie;
+	public AudioClip collectItems;
 
-    public AudioClip wateryClick;
+	private void Start(){
+		music.clip = background;
+		music.Play();
+	}
 
-    public AudioClip bufferFishSwim;
-
-    public AudioClip bossVoice;
-
-    public AudioClip buferfishDash;
-    public AudioClip collectItems;
-
-    private void Start()
-    {
-        Music.clip = background;
-        Music.Play();
-
-    }
-    public void PlaySFX(AudioClip clip)
-    {
-        Sound.PlayOneShot(clip);
-    }
+	public void PlaySfx(AudioClip clip){
+		sound.PlayOneShot(clip);
+	}
 }

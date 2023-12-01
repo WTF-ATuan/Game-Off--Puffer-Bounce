@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Prototype/Topdown/Shop.unity
     guid: ca578f9d43df4ff4c8e57b48652e9fd1
   - enabled: 1
+    path: Assets/Prototype/Topdown/CutScene Start.unity
+    guid: 7a3a3eb437d734c42aa00968def63026
+  - enabled: 1
     path: Assets/MainMenu/MainMenu.unity
     guid: 37085afe55e9c6841a63dd3a9bc72d06
   - enabled: 1
