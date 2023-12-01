@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class MainMenuButton : MonoBehaviour
 {
-    private void Start()
+    private void Start() 
     {
         // Find the button component in the GameObject
-        Button backButton = GetComponent<Button>() ;
+        Button backButton = GetComponent<Button>();
 
         // Add a listener to the button
-        backButton.onClick.AddListener(GoToMainMenu); 
+        backButton.onClick.AddListener(GoMainMenu); 
     }
 
-    private void GoToMainMenu()
+   public void GoMainMenu()
     {
         // Replace "MainMenu" with the actual name of your main menu scene
         SceneManager.LoadScene("MainMenu");
