@@ -26,7 +26,10 @@ namespace Prototype.Topdown{
 		}
 
 		private void Awake(){
-			if(StateManager == null){
+			if(StateManager != null && StateManager != this){
+				Destroy(gameObject);
+			}
+			else{
 				StateManager = this;
 			}
 
@@ -53,7 +56,8 @@ namespace Prototype.Topdown{
 					break;
 				case GameState.Defeated:
 					onDefeated?.Invoke();
-					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
+					onNextEvent.onClick.AddListener(() => ModifyState(GameState.MainMenu));
+					PlayerData = new PlayerData();
 					Time.timeScale = 0;
 					break;
 
@@ -63,6 +67,12 @@ namespace Prototype.Topdown{
 					Time.timeScale = 0;
 					break;
 
+				case GameState.MainMenu:
+					SceneManager.LoadScene(gameData.mainMenu.ToString());
+					break;
+				case GameState.Credit:
+					SceneManager.LoadScene(gameData.creditScene.ToString());
+					break;
 				default:
 					throw new ArgumentOutOfRangeException(nameof(state), state, null);
 			}
@@ -86,6 +96,8 @@ namespace Prototype.Topdown{
 		Defeated,
 		Victory,
 		Shop,
+		MainMenu,
+		Credit,
 	}
 
 	public class PlayerData{

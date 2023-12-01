@@ -12,18 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb08a20438d64766bd61c31cf6d21fd3, type: 3}
   m_Name: StateData
   m_EditorClassIdentifier: 
+  mainMenu:
+    m_SceneName: MainMenu
+  creditScene:
+    m_SceneName: Credits
   battleScene:
     m_SceneName: Battle Scene
-  battleSettings:
-  - enemyCount: 20
-    spawnDuration: 1.5
-  - enemyCount: 40
-    spawnDuration: 1
-  - enemyCount: 100
-    spawnDuration: 0.75
   shopScene:
     m_SceneName: Shop
-  bossScene:
-    m_SceneName: 
   cutscenes:
   - m_SceneName: CutScene Start

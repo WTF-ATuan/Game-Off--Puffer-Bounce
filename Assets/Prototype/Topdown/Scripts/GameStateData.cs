@@ -4,9 +4,10 @@ using UnityEngine;
 namespace Prototype.Topdown{
 	[CreateAssetMenu(menuName = "GameState/GameData", fileName = "StateData")]
 	public class GameStateData : ScriptableObject{
+		public SceneObject mainMenu;
+		public SceneObject creditScene;
 		public SceneObject battleScene;
 		public SceneObject shopScene;
-		public SceneObject bossScene;
 		public List<SceneObject> cutscenes;
 	}
 

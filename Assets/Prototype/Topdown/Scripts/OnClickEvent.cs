@@ -13,5 +13,17 @@ namespace Prototype.Topdown{
 		public void BackToGame(){
 			GameStateManager.StateManager.ModifyState(GameState.GamePlay);
 		}
+
+		public void LoadStartCutScene(){
+			GameStateManager.StateManager.ModifyState(GameState.CutScene, 0);
+		}
+
+		public void LoadCreditScene(){
+			GameStateManager.StateManager.ModifyState(GameState.Credit);
+		}
+
+		public void LoadMainMenu(){
+			GameStateManager.StateManager.ModifyState(GameState.MainMenu);
+		}
 	}
 }
