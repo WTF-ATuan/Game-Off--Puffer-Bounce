@@ -77,7 +77,7 @@ namespace Prototype.Topdown{
 			Destroy(enemy.gameObject);
 			killCount++;
 			if(killCount >= killGoal){
-				GameStateManager.StateManager.ModifyState(GameState.Shop);
+				GameStateManager.StateManager.ModifyState(GameState.Victory);
 			}
 		}
 

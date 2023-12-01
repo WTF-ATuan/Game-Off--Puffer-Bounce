@@ -42,7 +42,7 @@ namespace Prototype.Topdown{
 			col.gameObject.GetComponent<TopdownEnemy>().Hit();
 			_currentHealth -= 1;
 			if(_currentHealth < 1){
-				Debug.Log($"Player Die");
+				GameStateManager.StateManager.ModifyState(GameState.Defeated);
 				return;
 			}
 

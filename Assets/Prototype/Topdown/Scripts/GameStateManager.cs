@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Prototype.Topdown{
@@ -10,6 +11,9 @@ namespace Prototype.Topdown{
 		public PlayerData PlayerData;
 		public BattleSetting CurrentSetting{ get; private set; }
 
+		public UnityEvent onVictory;
+		public UnityEvent onDefeated;
+		public OnClickEvent onNextEvent;
 
 		private void Awake(){
 			if(StateManager == null){
@@ -40,6 +44,16 @@ namespace Prototype.Topdown{
 					break;
 				case GameState.BossFight:
 					break;
+				case GameState.Defeated:
+					onDefeated?.Invoke();
+					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
+					break;
+
+				case GameState.Victory:
+					onVictory?.Invoke();
+					onNextEvent.onClick.AddListener(() => ModifyState(GameState.Shop));
+					break;
+
 				default:
 					throw new ArgumentOutOfRangeException(nameof(state), state, null);
 			}
@@ -59,6 +73,8 @@ namespace Prototype.Topdown{
 		CutScene,
 		Tutorial,
 		GamePlay,
+		Defeated,
+		Victory,
 		Shop,
 		BossFight
 	}
