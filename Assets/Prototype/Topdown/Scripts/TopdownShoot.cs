@@ -46,6 +46,8 @@ namespace Prototype.Topdown{
 				bulletClone.GetComponent<Rigidbody2D>().AddForce((bulletClonePosition - position).normalized * 10,
 					ForceMode2D.Impulse);
 			}
+
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.PlayerSpread);
 		}
 
 		private void Shoot(Vector3 direction){
@@ -62,6 +64,8 @@ namespace Prototype.Topdown{
 				bulletClone.transform.up = rotation * direction;
 				bulletClone.GetComponent<Rigidbody2D>().AddForce(bulletClone.transform.up * 10, ForceMode2D.Impulse);
 			}
+
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.PlayerShooting);
 		}
 
 		private Vector3 GetMouseDirection(){

@@ -31,6 +31,7 @@ namespace Prototype.Topdown{
 			if(!_jump || !_energy.CheckEnergyCost(1)) return;
 			_rigidbody.AddForce(_moveValue * 10, ForceMode2D.Impulse);
 			_energy.UseEnergy(1);
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.PlayerDash);
 		}
 
 		private void HandleFaceDirection(){

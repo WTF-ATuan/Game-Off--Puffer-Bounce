@@ -41,8 +41,10 @@ namespace Prototype.Topdown{
 			_protectionTimer.Reset();
 			col.gameObject.GetComponent<TopdownEnemy>().Hit();
 			_currentHealth -= 1;
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.PlayerHurt);
 			if(_currentHealth < 1){
 				GameStateManager.StateManager.ModifyState(GameState.Defeated);
+				GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.Defeated);
 				return;
 			}
 

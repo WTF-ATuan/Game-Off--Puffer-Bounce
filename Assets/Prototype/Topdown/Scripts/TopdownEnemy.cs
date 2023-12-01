@@ -30,7 +30,7 @@ namespace Prototype.Topdown{
 			else{
 				Instantiate(drops, transform.position, Quaternion.identity).name = drops.name;
 			}
-
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.EnemyDie);
 			OnEnemyGetKill?.Invoke(this);
 		}
 

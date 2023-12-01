@@ -27,6 +27,7 @@ namespace Prototype.Topdown{
 		private void UpgradeShooting(){
 			if(!CheckPlayerCoin(int.Parse(shootingCost.text))){
 				Message("You don,t have enough coins");
+				GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.NotEnoughMoney);
 				return;
 			}
 
@@ -35,11 +36,13 @@ namespace Prototype.Topdown{
 			var nextPrice = 5 * (int)Mathf.Pow(1.25f, GameStateManager.StateManager.PlayerData.AdditionShootCount - 1);
 			shootingCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.Buy);
 		}
 
 		private void UpdateHealth(){
 			if(GameStateManager.StateManager.PlayerData.HealthCoins < int.Parse(healthCost.text)){
 				Message("You don,t have enough health coin");
+				GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.NotEnoughMoney);
 				return;
 			}
 
@@ -48,11 +51,14 @@ namespace Prototype.Topdown{
 			var nextPrice = 3 * (int)Mathf.Pow(2, GameStateManager.StateManager.PlayerData.AdditionHealth - 1);
 			healthCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.Buy);
+
 		}
 
 		private void UpgradeUlt(){
 			if(!CheckPlayerCoin(int.Parse(ultCost.text))){
 				Message("You don,t have enough coins");
+				GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.NotEnoughMoney);
 				return;
 			}
 
@@ -61,11 +67,13 @@ namespace Prototype.Topdown{
 			var nextPrice = 7 * (int)Mathf.Pow(1.5f, GameStateManager.StateManager.PlayerData.AdditionUltCount - 1);
 			ultCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.Buy);
 		}
 
 		private void UpgradeEnergy(){
 			if(!CheckPlayerCoin(int.Parse(energyCost.text))){
 				Message("You don,t have enough coins");
+				GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.NotEnoughMoney);
 				return;
 			}
 
@@ -74,6 +82,7 @@ namespace Prototype.Topdown{
 			var nextPrice = 5 * (int)Mathf.Pow(1.25f, GameStateManager.StateManager.PlayerData.AdditionEnergyMax - 1);
 			energyCost.text = nextPrice.ToString();
 			Message("Success! Oh yeah");
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.Buy);
 		}
 
 		private void Message(string text, float duration = 2f){

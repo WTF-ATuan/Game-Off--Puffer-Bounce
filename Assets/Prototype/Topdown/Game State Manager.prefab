@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: 29883eb031afa0c46879169eb27c0538, type: 2}
-  audioManger: {fileID: 0}
+  audioManger: {fileID: 521590580474950821}
   onVictory:
     m_PersistentCalls:
       m_Calls:
@@ -703,6 +703,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 161799440f06fa54fab3f9177e539f06, type: 3}
+--- !u!114 &521590580474950821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9220082183918974607, guid: 161799440f06fa54fab3f9177e539f06, type: 3}
+  m_PrefabInstance: {fileID: 8703558381295878698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f099a74bd690f84c97fdf1a31a2f4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2593175224078198409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6572316579366020259, guid: 161799440f06fa54fab3f9177e539f06, type: 3}

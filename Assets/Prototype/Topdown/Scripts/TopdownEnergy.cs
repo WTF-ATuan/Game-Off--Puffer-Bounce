@@ -68,6 +68,7 @@ namespace Prototype.Topdown{
 					break;
 			}
 
+			GameStateManager.StateManager.audioManger.PlaySfx(AudioManager.AudioType.CollectItems);
 			Destroy(col.gameObject);
 		}
 	}
